@@ -1,0 +1,19 @@
+ public static convertDate(date){
+    if(date !== null && date !== undefined && date !== ''){
+      var localDate = new Date(date + 'UTC');
+      localDate.toString();
+      return localDate;
+    }else{
+      return null;
+    }
+
+  }
+  public static convertDateUTC(date){
+    if(date !== null && date !== undefined && date !== ''){
+      let dates = new Date(date).toISOString().slice(0, 19).replace('T', ' ');
+      return dates;
+    }else{
+      return null;
+    }
+
+  }
