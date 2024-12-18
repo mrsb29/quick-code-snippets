@@ -1,3 +1,10 @@
+  public static numberOnly(event: any) {
+        const pattern = /[0-9]/;
+        const inputChar = String.fromCharCode(event.charCode);
+        if (event.keyCode !== 8 && !pattern.test(inputChar)) {
+            event.preventDefault();
+        }
+    }
  public static isNumber(event: any) {
     const pattern = /[0-9]/;
     const inputChar = String.fromCharCode(event.charCode);
