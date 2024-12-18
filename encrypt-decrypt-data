@@ -1,0 +1,16 @@
+   public static encryptId(id) {
+        try {
+            return CryptoJS.AES.encrypt(JSON.stringify(id), 'masterKey').toString();
+        } catch (e) {
+        }
+    }
+
+    public static decryptId(data) {
+        try {
+            const bytes = CryptoJS.AES.decrypt(data, 'masterKey');
+            if (bytes.toString()) {
+                return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+            }
+        } catch (e) {
+        }
+    }
