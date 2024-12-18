@@ -1,0 +1,89 @@
+public static status: boolean;
+  public static data = [];
+
+  public static sort(property, obj, status) {
+
+    this.status = status;
+    this.data = obj;
+    if (this.status === true) {
+      /*$('.table-custom thead th i').removeClass('fa fa-caret-down').addClass('fa fa-sort');
+      $('.table-custom thead #' + property + ' i').removeClass('fa fa-sort').addClass('fa fa-caret-up');*/
+      const direction = this.status ? 1 : -1;
+      // this.status = !this.status;
+      this.data.sort(function (a, b){
+
+        const getNumericPart = str => {
+          if (str == null) {
+            return 0;
+          }
+          return parseInt(str.replace(/\D/g, ''), 10);
+        };
+        if(getNumericPart(a[property]))
+        {
+          return -1;
+        }
+        if (a[property].toUpperCase() < b[property].toUpperCase()) {
+          return -1 * direction;
+        } else {
+          return 0;
+        }
+      });
+    } else {
+      /*$('.table-custom thead th i').removeClass('fa fa-caret-up').addClass('fa fa-sort');
+      $('.table-custom thead #' + property + ' i').removeClass('fa fa-sort').addClass('fa fa-caret-down');*/
+      const direction = this.status ? 1 : -1;
+      // this.status = !this.status;
+
+      this.data.sort(function (a, b) {
+        const getNumericPart = str => {
+          if (str == null) {
+            return 0;
+          }
+          return parseInt(str.replace(/\D/g, ''), 10);
+        };
+        const numericA = getNumericPart(a[property]);
+        const numericB = getNumericPart(b[property]);
+
+        if (!isNaN(numericA) && !isNaN(numericB)) {
+          return numericA - numericB;
+        }
+        else {
+          if (a[property].toUpperCase() > b[property].toUpperCase()) {
+            return 1 * direction;
+          } else {
+            return 0;
+          }
+        }
+      });
+    }
+  }
+
+  /*public static sort(property, obj) {
+    this.data = obj;
+    if (this.status === true) {
+      $('.table-custom thead th i').removeClass('fa fa-caret-down').addClass('fa fa-sort');
+      // $('.table-custom thead #' + property + ' i').removeClass('fa fa-caret-down').addClass('fa fa-caret-up');
+      $('.table-custom thead #' + property + ' i').removeClass('fa fa-sort').addClass('fa fa-caret-up');
+      const direction = this.status ? 1 : -1;
+      this.status = !this.status;
+      this.data.sort(function (a, b){
+        if (a[property].toUpperCase() < b[property].toUpperCase()) {
+          return -1 * direction;
+        } else {
+          return 0;
+        }
+      });
+    } else {
+      $('.table-custom thead th i').removeClass('fa fa-caret-up').addClass('fa fa-sort');
+      $('.table-custom thead #' + property + ' i').removeClass('fa fa-sort').addClass('fa fa-caret-down');
+      const direction = this.status ? 1 : -1;
+      this.status = !this.status;
+      this.data.sort(function (a, b) {
+        if (a[property].toUpperCase() > b[property].toUpperCase()) {
+          return 1 * direction;
+        } else {
+          return 0;
+        }
+      });
+    }
+  }*/
